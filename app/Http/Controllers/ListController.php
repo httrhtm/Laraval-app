@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Question;
 
 class ListController extends Controller
 {
@@ -23,6 +24,7 @@ class ListController extends Controller
      */
     public function index()
     {
-        return view('list');
+        $questions = Question::all();
+        return view('list')->with('questions', $questions);
     }
 }

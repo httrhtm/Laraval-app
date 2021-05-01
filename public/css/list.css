@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.py-4 {
+	margin: 20px;
+}
+
+.register {
+	margin: 0.25rem 1.25rem;
+	padding: 0.5rem 1.25rem;
+	background-color: rgba(0, 0, 0, 0.03);
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+	width: 200px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.register a {
+	color: black;
+}
+
+.list {
+	margin:20px 200px;
+}
+
+.list .textbox{
+	width: 500px;
+}
+
+.list button {
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	background-color: rgba(0, 0, 0, 0.03);
+
+}
