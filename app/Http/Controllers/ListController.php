@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use App\CorrectAnswer;
 
 class ListController extends Controller
 {
@@ -25,6 +26,10 @@ class ListController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view('list')->with('questions', $questions);
+        $answers = CorrectAnswer::all();
+        return view('list')->with([
+            'questions' => $questions,
+            'answers' => $answers,
+        ]);
     }
 }

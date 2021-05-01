@@ -19,11 +19,15 @@
 }
 
 .list {
-	margin:20px 200px;
+	margin:20px 300px;
+}
+
+.list .question-tbl {
+	margin-top: 15px;
 }
 
 .list .textbox{
-	width: 500px;
+	width: 380px;
 }
 
 .list button {
