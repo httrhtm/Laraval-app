@@ -7,7 +7,7 @@
 @extends('layouts.app_top')
 @section('content')
 <div class="register">
-	<a href="">新規登録</a>
+	<a href="{{ action('RegisterController@create') }}">新規登録</a>
 </div>
 
 <div class="list">
@@ -16,7 +16,7 @@
 			<tr>
 				<th>問題:</th>
 
-				<!-- 問題馬号 -->
+				<!-- 問題番号 -->
 				<td>{{ $question->id }}</td>
 
 				<!-- 問題 -->
