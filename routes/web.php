@@ -27,3 +27,7 @@ Route::post('/register/store', 'RegisterController@store')->name('register.store
 
 Route::post('/delete/confirm', 'DeleteController@confirm')->name('delete.confirm');
 Route::post('/delete/destroy', 'DeleteController@destroy')->name('delete.destroy');
+
+Route::post('/edit/edit', 'EditController@edit')->name('edit.edit');
+Route::post('/edit/confirm', 'EditController@confirm')->name('edit.confirm');
+Route::post('/edit/update', 'EditController@update')->name('edit.update');
