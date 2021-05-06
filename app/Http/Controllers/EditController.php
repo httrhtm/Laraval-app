@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\CorrectAnswer;
+use App\Question;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EditController extends Controller
 {
@@ -61,21 +64,33 @@ class EditController extends Controller
     }
 
     /**
-     * 削除処理
+     * 編集処理
      */
-//     public function destroy(Request $request)
-//     {
-//         //パラメーターを取得
-//         $question_id = $request->question_id;
-//         $answer_ids = $request->answer_id;
+    public function update(Request $request)
+    {
+        //パラメーターを取得
+        $question_id = $request->question_id;
+        $edit_question = $request->question;
+        $answer_ids = $request->answer_id;
+        $answers = $request->answer;
 
-//         Question::find($question_id)->delete();
+        //-------------------------------------
+        //questionの更新
+        //-------------------------------------
+        //find：一件だけ取得
+        $question = Question::find($question_id);
 
-//         foreach ($answer_ids as $id){
+        $question -> question = $edit_question;
+        $question -> save();
 
-//             CorrectAnswer::where('id', $id)->delete();
-//         }
+        //-------------------------------------
+        //answerの更新
+        //-------------------------------------
+        for ($i = 0; $i < count($answers); $i++) {
 
-//         return redirect('list');
-//     }
+            CorrectAnswer::where('id',$answer_ids[$i])->update(['answer'=>$answers[$i]]);
+        }
+
+        return redirect('list');
+    }
 }

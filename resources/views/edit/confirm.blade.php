@@ -19,7 +19,7 @@
 
     				<!-- 問題 -->
     				<td class="textbox">
-    					<input readonly type="text" value="{{ $question }}">
+    					<input readonly type="text" name="question" value="{{ $question }}">
     					<input type="hidden" name="question_id" value="{{ $question_id }}">
     				</td>
     			</tr>
@@ -38,7 +38,7 @@
         		</table>
         		@endforeach
         		@foreach ($answer_ids as $answer_id)
-        			<input type="hidden" name="answer_id"  value="{{ $answer_id }}">
+        			<input type="hidden" name="answer_id[]"  value="{{ $answer_id }}">
         		@endforeach
     		@else
     			<table>
@@ -55,8 +55,12 @@
     		</div>
 		</form>
 
-		<form action="{{ route('list') }}">
+		<form method="POST" action="{{ route('edit.edit') }}">
+		<!-- CSRF保護 -->
+		@csrf
 			<button type="submit">戻る</button>
+			<input type="hidden" name="question" value="{{ $question }}">
+			<input type="hidden" name="id"  value="{{ $question_id }}">
 		</form>
 	</div>
 	@endsection
