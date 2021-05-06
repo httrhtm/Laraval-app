@@ -5,9 +5,9 @@
 </head>
 <body>
 	@extends('layouts.app_top') @section('content')
-	<h3 class="title">新規登録</h3>
+	<h3 class="title">新規登録確認</h3>
 	<div class="register">
-		<form method="POST" action="{{ route('register.confirm') }}" autocomplete="off">
+		<form method="POST" action="{{ route('register.store') }}" autocomplete="off">
 		<!-- CSRF保護 -->
 		@csrf
 			<!-- 問題 -->
@@ -15,45 +15,30 @@
 				<tr>
 					<th>問題:</th>
 					<td class="textbox">
-						<input type="text" name="question">
+						<input type="text" name="question" value="{{ $question }}">
 					</td>
 
 				</tr>
 			</table>
 
 			<!-- 答え -->
+			@foreach($answers as $answer)
 			<table>
 				<tr>
 					<th>答え:</th>
 					<td class="textbox">
-						<input type="text" name="answers[]">
-					</td>
-					<td class="remove">
-						<button type="submit">削除</button>
+						<input type="text" name="answers[]" value="{{ $answer }}">
 					</td>
 				</tr>
 			</table>
-
-			<!-- 答え -->
-			<table>
-				<tr>
-					<th>答え:</th>
-					<td class="textbox">
-						<input type="text" name="answers[]">
-					</td>
-					<td class="remove">
-						<button type="submit">削除</button>
-					</td>
-				</tr>
-			</table>
+			@endforeach
 
 			<div class="button">
-    			<button type="button">追加</button>
-    			<button type="submit">確認</button>
+    			<button type="submit">登録</button>
 			</div>
 		</form>
 
-		<form action="{{ url('list') }}">
+		<form action="{{ route('register.create') }}">
 			<button type="submit">戻る</button>
 		</form>
 	</div>
