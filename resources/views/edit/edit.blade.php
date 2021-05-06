@@ -6,11 +6,11 @@
 <body>
 	@extends('layouts.app_top')
 	@section('content')
-	<h3 class="title">削除確認</h3>
+	<h3 class="title">編集</h3>
 
-	<div class="condirm">
+	<div class="edit">
 
-		<form method="POST" action="{{ route('delete.destroy') }}" autocomplete="off">
+		<form method="POST" action="{{ route('edit.confirm') }}" autocomplete="off">
 		<!-- CSRF保護 -->
 		@csrf
     		<table class="question-tbl">
@@ -19,7 +19,7 @@
 
     				<!-- 問題 -->
     				<td class="textbox">
-    					<input readonly type="text" value="{{ $question }}">
+    					<input type="text" name="question" value="{{ $question }}">
     					<input type="hidden" name="question_id" value="{{ $id }}">
     				</td>
     			</tr>
@@ -32,10 +32,13 @@
         			<tr>
         				<th>答え:</th>
         				<td class="textbox">
-        					<input readonly type="text" value="{{ $answer['answer'] }}">
+        					<input type="text" name="answer[]" value="{{ $answer['answer'] }}">
         					<input type="hidden" name="answer_id[]" value="{{ $answer['id'] }}">
         				</td>
-        			</tr>
+    					<td class="remove">
+    						<button type="submit">削除</button>
+    					</td>
+				</tr>
         		</table>
         		@endforeach
     		@else
@@ -45,12 +48,16 @@
         				<td class="textbox">
         					<input type="text" name="answer" value="{{ $answers }}">
         				</td>
+        				<td class="remove">
+    						<button type="submit">削除</button>
+    					</td>
         			</tr>
         		</table>
 			@endif
     		<div class="button">
-    			<button type="submit">削除</button>
-    		</div>
+    			<button type="button">追加</button>
+    			<button type="submit">確認</button>
+			</div>
 		</form>
 
 		<form action="{{ route('list') }}">

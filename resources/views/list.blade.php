@@ -24,10 +24,12 @@
 
 				<!-- 編集ボタン -->
 				<td>
-					<form action="edit.blade.php" method="post">
+					<form action="{{ route('edit.edit') }}" method="post">
 					<!-- CSRF保護 -->
 					@csrf
 						<button type="submit">編集</button>
+						<input type="hidden" name="id" value="{{ $question->id }}">
+						<input type="hidden" name="question" value="{{ $question->question }}">
 					</form>
 				</td>
 

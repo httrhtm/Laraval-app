@@ -6,11 +6,11 @@
 <body>
 	@extends('layouts.app_top')
 	@section('content')
-	<h3 class="title">削除確認</h3>
+	<h3 class="title">編集確認</h3>
 
 	<div class="condirm">
 
-		<form method="POST" action="{{ route('delete.destroy') }}" autocomplete="off">
+		<form method="POST" action="{{ route('edit.update') }}" autocomplete="off">
 		<!-- CSRF保護 -->
 		@csrf
     		<table class="question-tbl">
@@ -19,8 +19,8 @@
 
     				<!-- 問題 -->
     				<td class="textbox">
-    					<input readonly type="text" value="{{ $question }}">
-    					<input type="hidden" name="question_id" value="{{ $id }}">
+    					<input readonly type="text" name="question" value="{{ $question }}">
+    					<input type="hidden" name="question_id" value="{{ $question_id }}">
     				</td>
     			</tr>
     		</table>
@@ -32,11 +32,13 @@
         			<tr>
         				<th>答え:</th>
         				<td class="textbox">
-        					<input readonly type="text" value="{{ $answer['answer'] }}">
-        					<input type="hidden" name="answer_id[]" value="{{ $answer['id'] }}">
+        					<input  readonly type="text" name="answer[]" value="{{ $answer }}">
         				</td>
         			</tr>
         		</table>
+        		@endforeach
+        		@foreach ($answer_ids as $answer_id)
+        			<input type="hidden" name="answer_id[]"  value="{{ $answer_id }}">
         		@endforeach
     		@else
     			<table>
@@ -49,12 +51,16 @@
         		</table>
 			@endif
     		<div class="button">
-    			<button type="submit">削除</button>
+    			<button type="submit">更新</button>
     		</div>
 		</form>
 
-		<form action="{{ route('list') }}">
+		<form method="POST" action="{{ route('edit.edit') }}">
+		<!-- CSRF保護 -->
+		@csrf
 			<button type="submit">戻る</button>
+			<input type="hidden" name="question" value="{{ $question }}">
+			<input type="hidden" name="id"  value="{{ $question_id }}">
 		</form>
 	</div>
 	@endsection
