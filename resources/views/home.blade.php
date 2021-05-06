@@ -1,5 +1,10 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+<link href="{{ asset('css/top.css') }}" rel="stylesheet">
+</head>
+<body>
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -18,23 +23,20 @@
                     You are logged in!
                 </div>
 
-                <div class="top-menue">
+                <ul class="top-menue">
 
-					<form action="list.php" method="post">
-						<button type="submit">問題と答えを確認・登録する ＞</button>
-					</form>
+                	<li><a href="{{ action('ListController@index') }}">問題と答えを確認・登録する ＞</a></li>
 
-					<form action="test.php" method="post">
-						<button type="submit">テストをする ＞</button>
-					</form>
+                	<li><a href="">テストをする ＞</a></li>
 
-					<form action="history.php" method="post">
-						<button type="submit">過去の採点結果をみる ＞</button>
-					</form>
+                	<li><a href="">過去の採点結果をみる ＞</a></li>
+				</ul>
 
-				</div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+</body>
+</html>
