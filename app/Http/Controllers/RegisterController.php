@@ -67,6 +67,7 @@ class RegisterController extends Controller
 
         //配列の場合
         if (is_array($inputs)) {
+            $array = [];
             //1つずつanswerに入れる
             for ($i = 0; $i < count($inputs); $i++) {
 
@@ -75,16 +76,18 @@ class RegisterController extends Controller
                     'questions_id' => $questions_id[0]['id'],
                     'created_at' => $now
                 ];
-
-                DB::table('correct_answers')-> insert($data);
-
+                $array[]= $data; //データを配列に入れる
             }
+
+            DB::table('correct_answers')-> insert($array);
+
         //配列以外の場合
         } else {
             $answer->answer = $inputs;
             $answer->questions_id = $questions_id[0]['id'];
             $answer->save();
         }
+
 
         return redirect('list');
     }
