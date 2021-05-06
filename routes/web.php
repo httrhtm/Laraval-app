@@ -24,3 +24,6 @@ Route::get('/list', 'ListController@index')->name('list');
 Route::get('/register/create', 'RegisterController@create')->name('register.create');
 Route::post('/register/confirm', 'RegisterController@confirm')->name('register.confirm');
 Route::post('/register/store', 'RegisterController@store')->name('register.store');
+
+Route::post('/delete/confirm', 'DeleteController@confirm')->name('delete.confirm');
+Route::post('/delete/destroy', 'DeleteController@destroy')->name('delete.destroy');

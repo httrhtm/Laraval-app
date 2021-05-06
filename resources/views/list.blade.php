@@ -7,7 +7,7 @@
 @extends('layouts.app_top')
 @section('content')
 <div class="register">
-	<a href="{{ action('RegisterController@create') }}">新規登録</a>
+	<a href="{{ route('register.create') }}">新規登録</a>
 </div>
 
 <div class="list">
@@ -25,14 +25,20 @@
 				<!-- 編集ボタン -->
 				<td>
 					<form action="edit.blade.php" method="post">
+					<!-- CSRF保護 -->
+					@csrf
 						<button type="submit">編集</button>
 					</form>
 				</td>
 
 				<!-- 削除ボタン -->
 				<td>
-					<form action="delete_confirm.blade.php" method="post">
+					<form action="{{ route('delete.confirm') }}" method="post">
+					<!-- CSRF保護 -->
+					@csrf
 						<button type="submit">削除</button>
+						<input type="hidden" name="id" value="{{ $question->id }}">
+						<input type="hidden" name="question" value="{{ $question->question }}">
 					</form>
 				</td>
 
