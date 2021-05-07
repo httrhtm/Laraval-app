@@ -23,15 +23,17 @@
 
 			<!-- 答え -->
 			<table>
-				<tr>
-					<th>答え:</th>
-					<td class="textbox">
-						<input type="text" name="answers[]">
-					</td>
-					<td class="remove">
-						<button type="submit">削除</button>
-					</td>
-				</tr>
+				<tbody id="tbody">
+    				<tr>
+    					<th>答え:</th>
+    					<td class="textbox">
+    						<input type="text" name="answers[]">
+    					</td>
+    					<td class="remove">
+    						<button type="submit">削除</button>
+    					</td>
+    				</tr>
+				</tbody>
 			</table>
 
 			<div class="button">
