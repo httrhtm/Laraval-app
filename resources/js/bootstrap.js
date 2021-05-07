@@ -10,6 +10,7 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
+	require('jquery-ui/ui/widgets/sortable.js');
     require('bootstrap');
 } catch (e) {}
 

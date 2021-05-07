@@ -34,21 +34,8 @@
 				</tr>
 			</table>
 
-			<!-- 答え -->
-			<table>
-				<tr>
-					<th>答え:</th>
-					<td class="textbox">
-						<input type="text" name="answers[]">
-					</td>
-					<td class="remove">
-						<button type="submit">削除</button>
-					</td>
-				</tr>
-			</table>
-
 			<div class="button">
-    			<button type="button">追加</button>
+    			<button id="addRow">追加</button>
     			<button type="submit">確認</button>
 			</div>
 		</form>
