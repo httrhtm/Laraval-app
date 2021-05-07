@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Question;
 use App\CorrectAnswer;
+use App\Http\Requests\PostRequest;
 use Carbon\Carbon;
 
 class RegisterController extends Controller
@@ -31,7 +32,7 @@ class RegisterController extends Controller
     /**
      * 確認画面へ移動
      */
-    public function confirm(Request $request)
+    public function confirm(PostRequest $request)
     {
         //-------------------------------------------
         //パラメーターの取得
