@@ -29,6 +29,14 @@ class RegisterController extends Controller
     // 確認画面へ移動
     public function confirm(Request $request)
     {
+        // validation
+        $rules = [
+            'question' => ['required', 'string', 'max:500'],
+            'answers.*' => ['required', 'string', 'max:200'],
+        ];
+
+        $this->validate($request, $rules);
+
         //フォームから受け取ったすべてのinputの値を取得
         $question = $request->question;
         $answers = $request->answers;
