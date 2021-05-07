@@ -20,16 +20,22 @@ class RegisterController extends Controller
         $this->middleware('auth');
     }
 
-    // 新規登録画面へ移動
+    /**
+     * 登録画面へ移動
+     */
     public function create()
     {
         return view('register.create');
     }
 
-    // 確認画面へ移動
+    /**
+     * 確認画面へ移動
+     */
     public function confirm(Request $request)
     {
-        // validation
+        //---------------------------
+        // バリデーション
+        //---------------------------
         $rules = [
             'question' => ['required', 'string', 'max:500'],
             'answers.*' => ['required', 'string', 'max:200'],
@@ -37,19 +43,26 @@ class RegisterController extends Controller
 
         $this->validate($request, $rules);
 
-        //フォームから受け取ったすべてのinputの値を取得
+        //---------------------------
+        //変数に代入
+        //---------------------------
         $question = $request->question;
         $answers = $request->answers;
 
-        //入力内容確認ページのviewに変数を渡して表示
+        //---------------------------
+        // 確認画面に移動
+        //---------------------------
         return view('register.confirm', [
             'question' => $question,
             'answers' => $answers,
         ]);
     }
 
-    // 実際の追加処理
-    // listへ移動
+    /**
+     * 登録処理
+     *
+     * 一覧画面へ移動
+     */
     public function store(Request $request)
     {
         $question = new Question();
@@ -58,22 +71,32 @@ class RegisterController extends Controller
 
         $answer = new CorrectAnswer();
 
+        //---------------------------
         //配列の入力値を取得
+        //---------------------------
         $inputs = $request->answers;
 
+        //---------------------------
         //questions_idを取得
+        //---------------------------
         $questions_id = DB::table('questions')->select('id')
         ->orderByRaw('created_at desc')
         ->limit(1)
         ->get();
 
+        //---------------------------
         //JSON 文字列をデコードする
+        //---------------------------
         $questions_id = json_decode($questions_id, true);
 
+        //---------------------------
         //現在時刻を取得
+        //---------------------------
         $now = Carbon::now();
 
+        //---------------------------
         //配列の場合
+        //---------------------------
         if (is_array($inputs)) {
             $array = [];
             //1つずつanswerに入れる
@@ -89,7 +112,9 @@ class RegisterController extends Controller
 
             DB::table('correct_answers')-> insert($array);
 
+        //---------------------------
         //配列以外の場合
+        //---------------------------
         } else {
             $answer->answer = $inputs;
             $answer->questions_id = $questions_id[0]['id'];
