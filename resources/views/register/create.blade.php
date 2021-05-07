@@ -15,7 +15,7 @@
 				<tr>
 					<th>問題:</th>
 					<td class="textbox">
-						<input type="text" name="question">
+						<input type="text" name="question" value="{{ old('question') }}">
 					</td>
 
 				</tr>
@@ -26,7 +26,7 @@
 				<tr>
 					<th>答え:</th>
 					<td class="textbox">
-						<input type="text" name="answers[]">
+						<input type="text" name="answers[]" value="{{ old('answer') }}">
 					</td>
 					<td class="remove">
 						<button type="submit">削除</button>
@@ -39,7 +39,7 @@
 				<tr>
 					<th>答え:</th>
 					<td class="textbox">
-						<input type="text" name="answers[]">
+						<input type="text" name="answers[]" value="{{ old('answer') }}">
 					</td>
 					<td class="remove">
 						<button type="submit">削除</button>

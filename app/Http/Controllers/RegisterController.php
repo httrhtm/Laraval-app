@@ -20,28 +20,38 @@ class RegisterController extends Controller
         $this->middleware('auth');
     }
 
-    // 新規登録画面へ移動
+    /**
+     * 登録画面へ移動
+     */
     public function create()
     {
         return view('register.create');
     }
 
-    // 確認画面へ移動
+    /**
+     * 確認画面へ移動
+     */
     public function confirm(Request $request)
     {
-        //フォームから受け取ったすべてのinputの値を取得
+        //-------------------------------------------
+        //パラメーターの取得
+        //-------------------------------------------
         $question = $request->question;
         $answers = $request->answers;
 
-        //入力内容確認ページのviewに変数を渡して表示
+        //-------------------------------------------
+        //確認画面へ移動
+        //-------------------------------------------
         return view('register.confirm', [
             'question' => $question,
             'answers' => $answers,
         ]);
     }
 
-    // 実際の追加処理
-    // listへ移動
+    /**
+     * DB登録処理
+     * 一覧画面へ移動
+     */
     public function store(Request $request)
     {
         $question = new Question();
