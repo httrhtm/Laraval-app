@@ -9,7 +9,18 @@
 	<div class="register">
 		<form method="POST" action="{{ route('register.confirm') }}" autocomplete="off">
 		<!-- CSRF保護 -->
-		@csrf
+			@csrf
+
+            <!-- エラーメッセージ -->
+			@if ($errors->any())
+			<div class="alert alert-danger">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+			@endif
 			<!-- 問題 -->
 			<table class="question-tbl">
 				<tr>
