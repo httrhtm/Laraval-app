@@ -10,12 +10,16 @@
 		<form method="POST" action="{{ route('register.confirm') }}" autocomplete="off">
 		<!-- CSRF保護 -->
 		@csrf
+
 			<!-- 問題 -->
 			<table class="question-tbl">
 				<tr>
 					<th>問題:</th>
 					<td class="textbox">
-						<input type="text" name="question">
+						<input type="text" name="question" class="@error('question') is-invalid @enderror">
+						@error('question')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
 					</td>
 
 				</tr>
@@ -26,7 +30,10 @@
 				<tr>
 					<th>答え:</th>
 					<td class="textbox">
-						<input type="text" name="answers[]">
+						<input type="text" name="answers[]" class="@error('answer') is-invalid @enderror">
+						@error('answer')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
 					</td>
 					<td class="remove">
 						<button type="submit">削除</button>
@@ -39,7 +46,10 @@
 				<tr>
 					<th>答え:</th>
 					<td class="textbox">
-						<input type="text" name="answers[]">
+						<input type="text" name="answers[]" class="@error('answer') is-invalid @enderror">
+						@error('answer')
+							<div class="alert alert-danger">{{ $message }}</div>
+						@enderror
 					</td>
 					<td class="remove">
 						<button type="submit">削除</button>
