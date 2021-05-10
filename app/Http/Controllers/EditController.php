@@ -52,7 +52,7 @@ class EditController extends Controller
         $question_id = $request->question_id;
         $question = $request->question;
         $answer_ids = $request->answer_id;
-        $answers = $request->answer;
+        $answers = $request->answers;
 
         //確認ページのviewに変数を渡して表示
         return view('edit.confirm', [
@@ -88,7 +88,30 @@ class EditController extends Controller
         //-------------------------------------
         for ($i = 0; $i < count($answers); $i++) {
 
-            CorrectAnswer::where('id',$answer_ids[$i])->update(['answer'=>$answers[$i]]);
+            if (isset($answer_ids[$i])) {
+
+                CorrectAnswer::where('id',$answer_ids[$i])->update(['answer'=>$answers[$i]]);
+
+            } else {
+                //---------------------------
+                //現在時刻を取得
+                //---------------------------
+                $now = Carbon::now();
+
+                $array = [];
+                //1つずつanswerに入れる
+                for ($i = 0; $i < count($answers); $i++) {
+
+                    $data = [
+                        'answer' => $answers[$i],
+                        'questions_id' => $question_id,
+                        'created_at' => $now
+                    ];
+                    $array[]= $data; //データを配列に入れる
+                }
+
+                DB::table('correct_answers')-> insert($array);
+            }
         }
 
         return redirect('list');

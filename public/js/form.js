@@ -19,7 +19,6 @@ function addTableRow() {
 
 	//削除ボタンの情報
 	var button_data = document.createElement('input');
-  	button_data.id = i;
 	button_data.type = 'button';
   	button_data.onclick = function(){deleteTableRow(this);}
   	button_data.value = '削除';
