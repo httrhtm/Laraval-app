@@ -60,7 +60,7 @@
 		@csrf
 			<button type="submit">戻る</button>
 			<input type="hidden" name="question" value="{{ $question }}">
-			<input type="hidden" name="id"  value="{{ $question_id }}">
+			<input type="hidden" name="id" value="{{ $question_id }}">
 		</form>
 	</div>
 	@endsection

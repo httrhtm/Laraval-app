@@ -27,6 +27,7 @@
 					<th>問題:</th>
 					<td class="textbox">
 						<input type="text" name="question">
+						<input type="hidden" name="question_id" value="{{ $question_id }}">
 					</td>
 
 				</tr>
