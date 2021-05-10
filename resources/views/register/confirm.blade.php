@@ -15,7 +15,7 @@
 				<tr>
 					<th>問題:</th>
 					<td class="textbox">
-						<input type="text" name="question" value="{{ $question }}">
+						<input class="input" type="text" name="question" value="{{ $question }}">
 					</td>
 
 				</tr>
@@ -27,7 +27,7 @@
 				<tr>
 					<th>答え:</th>
 					<td class="textbox">
-						<input type="text" name="answers[]" value="{{ $answer }}">
+						<input class="input" type="text" name="answers[]" value="{{ $answer }}">
 					</td>
 				</tr>
 			</table>
