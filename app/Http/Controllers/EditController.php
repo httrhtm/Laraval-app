@@ -127,7 +127,25 @@ class EditController extends Controller
         //-------------------------------------
         for ($i = 0; $i < count($answers); $i++) {
 
-            CorrectAnswer::where('id',$answer_ids[$i])->update(['answer'=>$answers[$i]]);
+            if (!empty($answer_ids[$i])){
+
+                CorrectAnswer::where('id',$answer_ids[$i])->update(['answer'=>$answers[$i]]);
+
+
+            } else {
+
+                $now = Carbon::now(); //現在時刻
+
+                $data = [
+                    'answer' => $answers[$i],
+                    'questions_id' => $question_id,
+                    'created_at' => $now
+                ];
+
+                DB::table('correct_answers')-> insert($data);
+            }
+
+
         }
 
         return redirect('list');

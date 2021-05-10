@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+<script src="{{ asset('js/form.js') }}"></script>
 </head>
 <body>
 	@extends('layouts.app_top') @section('content')
@@ -26,41 +27,24 @@
 				<tr>
 					<th>問題:</th>
 					<td class="textbox">
-						<input type="text" name="question">
-						<input type="hidden" name="question_id" value="{{ $question_id }}">
+						<input class="input" type="text" name="question">
 					</td>
 
 				</tr>
 			</table>
 
 			<!-- 答え -->
-			<table>
+			<table id="answer-tbl">
 				<tr>
 					<th>答え:</th>
 					<td class="textbox">
-						<input type="text" name="answers[]">
-					</td>
-					<td class="remove">
-						<button type="submit">削除</button>
-					</td>
-				</tr>
-			</table>
-
-			<!-- 答え -->
-			<table>
-				<tr>
-					<th>答え:</th>
-					<td class="textbox">
-						<input type="text" name="answers[]">
-					</td>
-					<td class="remove">
-						<button type="submit">削除</button>
+						<input class="input" type="text" name="answers[]">
 					</td>
 				</tr>
 			</table>
 
 			<div class="button">
-    			<button type="button">追加</button>
+    			<input type="button" value="追加" onclick="addTableRow();">
     			<button type="submit">確認</button>
 			</div>
 		</form>

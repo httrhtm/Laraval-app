@@ -19,7 +19,7 @@
 
     				<!-- 問題 -->
     				<td class="textbox">
-    					<input readonly type="text" name="question" value="{{ $question }}">
+    					<input readonly class="input" type="text" name="question" value="{{ $question }}">
     					<input type="hidden" name="question_id" value="{{ $question_id }}">
     				</td>
     			</tr>
@@ -32,7 +32,7 @@
         			<tr>
         				<th>答え:</th>
         				<td class="textbox">
-        					<input  readonly type="text" name="answer[]" value="{{ $answer }}">
+        					<input  readonly class="input" type="text" name="answer[]" value="{{ $answer }}">
         				</td>
         			</tr>
         		</table>
