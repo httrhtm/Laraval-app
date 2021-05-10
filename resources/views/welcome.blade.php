@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -96,5 +97,9 @@
                 </div>
             </div>
         </div>
+        <div id="app">
+        <example-component></example-component>
+    </div>
+    <script src="{{mix('js/app.js')}}"></script>
     </body>
 </html>
