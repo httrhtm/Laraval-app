@@ -27,7 +27,12 @@
 				<tr>
 					<th>問題:</th>
 					<td class="textbox">
+<<<<<<< HEAD
 						<input class="input" type="text" name="question">
+=======
+						<input type="text" name="question">
+						<input type="hidden" name="question_id" value="{{ $question_id }}">
+>>>>>>> 041c2922048321919e0069da6548daf3f9b04afb
 					</td>
 
 				</tr>

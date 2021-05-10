@@ -15,14 +15,30 @@
 		<form method="POST" action="{{ route('edit.confirm') }}" autocomplete="off">
 		<!-- CSRF保護 -->
 		@csrf
+
+            <!-- エラーメッセージ -->
+			@if ($errors->any())
+			<div class="alert alert-danger">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+			@endif
     		<table class="question-tbl">
     			<tr>
     				<th>問題:</th>
 
     				<!-- 問題 -->
     				<td class="textbox">
+<<<<<<< HEAD
     					<input class="input" type="text" name="question" value="{{ $question }}">
     					<input type="hidden" name="question_id" value="{{ $id }}">
+=======
+    					<input type="text" name="question" value="{{ $question }}">
+    					<input type="hidden" name="question_id" value="{{ $question_id }}">
+>>>>>>> 041c2922048321919e0069da6548daf3f9b04afb
     				</td>
     			</tr>
     		</table>
@@ -33,8 +49,13 @@
         			<tr>
         				<th>答え:</th>
         				<td class="textbox">
+<<<<<<< HEAD
         					<input class="input" type="text" name="answers[]" value="{{ $answer['answer'] }}">
         					<input type="hidden" name="answer_id[]" value="{{ $answer['id'] }}">
+=======
+        					<input type="text" name="answers[]" value="{{ $answer['answer'] }}">
+        					<input type="hidden" name="answer_ids[]" value="{{ $answer['id'] }}">
+>>>>>>> 041c2922048321919e0069da6548daf3f9b04afb
         				</td>
     			</tr>
         		</table>
