@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+<script src="{{ asset('js/form.js') }}"></script>
 </head>
 <body>
 	@extends('layouts.app_top')
@@ -37,36 +38,23 @@
     		</table>
 
     		<!-- 答え -->
-    		@if (is_array($answers))
-        		@foreach ($answers as $answer)
-        		<table>
-        			<tr>
-        				<th>答え:</th>
-        				<td class="textbox">
-        					<input class="input" type="text" name="answers[]" value="{{ $answer['answer'] }}">
-        					<input type="hidden" name="answer_ids[]" value="{{ $answer['id'] }}">
-        				</td>
-    					<td class="remove">
-    						<button type="submit">削除</button>
-    					</td>
-				</tr>
-        		</table>
-        		@endforeach
-    		@else
-    			<table>
-        			<tr>
-        				<th>答え:</th>
-        				<td class="textbox">
-        					<input type="text" name="answer" value="{{ $answers }}">
-        				</td>
-        				<td class="remove">
-    						<button type="submit">削除</button>
-    					</td>
-        			</tr>
-        		</table>
-			@endif
+    		@foreach ($answers as $answer)
+    		<table >
+    			<tr>
+    				<th>答え:</th>
+    				<td class="textbox">
+    					<input class="input" type="text" name="answers[]" value="{{ $answer['answer'] }}">
+    					<input type="hidden" name="answer_ids[]" value="{{ $answer['id'] }}">
+    				</td>
+    			</tr>
+    		</table>
+        	@endforeach
+
+			<!-- 答え（追加ボタン用） -->
+        	<table id="answer-tbl"></table>
+
     		<div class="button">
-    			<button type="button">追加</button>
+    			<input type="button" value="追加" onclick="addTableRow();">
     			<button type="submit">確認</button>
 			</div>
 		</form>
