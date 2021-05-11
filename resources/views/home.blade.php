@@ -18,18 +18,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h2>ようこそ、{{ Auth::user()->name }}さん！</h2>
+                    <h2>ようこそ、{{ Auth::user()->name }}さん</h2>
 
                     You are logged in!
                 </div>
 
                 <ul class="top-menue">
 
+					@if ($admin == 1)
                 	<li><a href="{{ action('ListController@index') }}">問題と答えを確認・登録する ＞</a></li>
+					@endif
 
                 	<li><a href="">テストをする ＞</a></li>
 
                 	<li><a href="">過去の採点結果をみる ＞</a></li>
+
+					@if ($admin == 1)
+                	<li><a href="">ユーザを追加・編集する　＞</a></li>
+                	@endif
+
 				</ul>
 
             </div>
