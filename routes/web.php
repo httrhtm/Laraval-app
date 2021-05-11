@@ -32,3 +32,6 @@ Route::get('/edit/edit', 'EditController@edit')->name('edit.edit');
 Route::post('/edit/edit', 'EditController@edit')->name('edit.edit');
 Route::post('/edit/confirm', 'EditController@confirm')->name('edit.confirm');
 Route::post('/edit/update', 'EditController@update')->name('edit.update');
+
+Route::get('/test/test', 'TestController@test')->name('test.test');
+Route::get('/test/result', 'TestController@result')->name('test.result');
