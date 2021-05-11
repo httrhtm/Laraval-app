@@ -6,6 +6,9 @@ use App\CorrectAnswer;
 use App\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\History;
 
 class TestController extends Controller
 {
@@ -88,6 +91,13 @@ class TestController extends Controller
         // --------------------------------------------------
         // 登録処理
         // --------------------------------------------------
+        $data = [
+            'users_id' => Auth::id(),
+            'point' => $point,
+            'created_at' => Carbon::now()
+        ];
+
+        DB::table('histories')-> insert($data);
 
         // --------------------------------------------------
         // 結果画面に移動
