@@ -1,6 +1,8 @@
 @charset "UTF-8";
 .py-4 {
 	margin: 20px;
+	margin: 0 auto;
+	width: 50%;
 }
 
 .register {
@@ -12,6 +14,7 @@
 	width: 200px;
 	text-align: center;
 	margin: 0 auto;
+	width: 35%;
 }
 
 .register a {
@@ -19,19 +22,14 @@
 }
 
 .list {
-	margin:20px 300px;
+	width: 90%;
 }
 
 .list .question-tbl {
 	margin-top: 15px;
 }
 
-.list .textbox{
-	width: 380px;
-}
-
 .list button {
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	background-color: rgba(0, 0, 0, 0.03);
-
 }
