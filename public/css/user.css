@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+.py-4 {
+	margin: 20px;
+	margin: 0 auto;
+	width: 35%;
+}
+
+.register {
+	margin: 0.25rem 1.25rem;
+	padding: 0.5rem 1.25rem;
+	background-color: rgba(0, 0, 0, 0.03);
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+	text-align: center;
+	margin: 0 auto;
+	width: 40%;
+}
+
+.register a {
+	color: black;
+}
+
+button {
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	background-color: rgba(0, 0, 0, 0.03);
+}
+
+table {
+	margin-top: 50px;
+}
+
+.box {
+	border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.id {
+	text-align: center;
+	min-width: 18px;
+}
+
+.admin {
+	text-align: center;
+	min-width: 48px;
+}
+
+.username {
+	width: 65%;
+}
+
+.btn {
+	min-width: 50px;
+}
