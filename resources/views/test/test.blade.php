@@ -17,7 +17,10 @@
 				<th>問題:</th>
 
 				<!-- 問題番号 -->
-				<td>{{ $question->id }}</td>
+				<td>
+					{{ $question->id }}
+					<input type="hidden" name="question_id[]" value="{{ $question->id }}">
+				</td>
 
 				<!-- 問題 -->
 				<td class="textbox">{{ $question->question }}</td>
@@ -29,7 +32,7 @@
 			<tr>
 				<th>回答:</th>
 				<td class="textbox">
-					<input class="input" type="text" name="input">
+					<input class="input" type="text" name="input[]">
 				</td>
 			</tr>
 		</table>
