@@ -31,7 +31,7 @@
 
                 	<li><a href="{{ route('test.test') }}">テストをする ＞</a></li>
 
-                	<li><a href="">過去の採点結果をみる ＞</a></li>
+                	<li><a href="{{ route('history') }}">過去の採点結果をみる ＞</a></li>
 
 					@if ($admin == 1)
                 	<li><a href="">ユーザを追加・編集する　＞</a></li>

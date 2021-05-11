@@ -93,7 +93,7 @@ class TestController extends Controller
         // --------------------------------------------------
         $data = [
             'users_id' => Auth::id(),
-            'point' => $point,
+            'point' => $score,
             'created_at' => Carbon::now()
         ];
 
