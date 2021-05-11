@@ -24,11 +24,11 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $auths = Auth::id();
+        $user_id = Auth::id();
 
-        $history = History::where('users_id', $auths)->get();
+        $history = History::where('users_id', $user_id)->get();
 
-        $user = User::where('id', $auths)->get();
+        $user = User::where('id', $user_id)->get();
 
         return view('history')->with([
             'history' => $history,
