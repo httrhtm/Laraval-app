@@ -37,3 +37,5 @@ Route::get('/test/test', 'TestController@test')->name('test.test');
 Route::post('/test/result', 'TestController@result')->name('test.result');
 
 Route::get('/history', 'HistoryController@index')->name('history');
+
+Route::get('/user/list', 'User\ListController@index')->name('user.list');
