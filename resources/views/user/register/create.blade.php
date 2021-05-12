@@ -34,13 +34,13 @@
 				<tr>
 					<th>PW:</th>
 					<td>
-						<input class="input" type="text" name="pass">
+						<input class="input" type="text" name="password">
 					</td>
 				</tr>
 				<tr>
 					<th>PW確認:</th>
 					<td>
-						<input class="input" type="text" name="pass_conf">
+						<input class="input" type="text" name="password_confirmation">
 					</td>
 				</tr>
 				<tr>

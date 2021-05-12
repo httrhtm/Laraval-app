@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 
 class RegisterController extends Controller
@@ -34,13 +35,37 @@ class RegisterController extends Controller
         //---------------------------
         // バリデーション
         //---------------------------
+        $rules = [
+            'user_name' => ['required', 'regex:/^[a-zA-Z0-9]+$/', ],
+            'password' => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'confirmed'],
+            'password_confirmation' => ['required'],
+        ];
+
+        $message = [
+            'user_name.required' => 'ユーザー名を入力してください。',
+            'user_name.regex' => 'ユーザー名を半角英数字で入力してください。',
+            'password.required' => 'パスワードを入力してください。',
+            'password.regex' => 'パスワードを半角英数字で入力してください',
+            'password.min' => 'パスワードを８文字以上で入力してください',
+            'password.confirmed' => 'パスワードが一致しません。',
+            'password_confirmation.required' => 'パスワード確認を入力してください。',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+
+        //エラー時の処理
+        if ($validator->fails()) {
+            return redirect()->route('user.register.create')
+            ->withErrors($validator);
+        }
+
 
         //---------------------------
         //パラメーターを変数に代入
         //---------------------------
         $user_name = $request->user_name;
-        $pass = $request->pass;
-        $pass_conf = $request->pass_conf;
+        $pass = $request->password;
+        $pass_conf = $request->password_confirmation;
         $admin_check = $request->admin_check;
 
         //---------------------------
