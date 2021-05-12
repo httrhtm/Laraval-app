@@ -7,7 +7,7 @@
 @extends('layouts.app_top')
 @section('content')
 <div class="register">
-	<a href="">新規登録</a>
+	<a href="{{ route('user.register.create') }}">新規登録</a>
 </div>
 <div class="list">
 	<table>

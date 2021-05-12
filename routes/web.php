@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -39,3 +39,7 @@ Route::post('/test/result', 'TestController@result')->name('test.result');
 Route::get('/history', 'HistoryController@index')->name('history');
 
 Route::get('/user/list', 'User\ListController@index')->name('user.list');
+
+Route::get('/user/register/create', 'User\RegisterController@create')->name('user.register.create');
+Route::post('/user/register/confirm', 'User\RegisterController@confirm')->name('user.register.confirm');
+Route::post('/user/register/store', 'User\RegisterController@store')->name('user.register.store');
