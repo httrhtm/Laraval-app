@@ -23,7 +23,7 @@ class ListController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::whereIn('deleteflag', ["0"])->get();
         return view('user.list')->with([
             'users' => $users
         ]);
