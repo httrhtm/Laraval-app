@@ -43,3 +43,6 @@ Route::get('/user/list', 'User\ListController@index')->name('user.list');
 Route::get('/user/register/create', 'User\RegisterController@create')->name('user.register.create');
 Route::post('/user/register/confirm', 'User\RegisterController@confirm')->name('user.register.confirm');
 Route::post('/user/register/store', 'User\RegisterController@store')->name('user.register.store');
+
+Route::post('/user/delete/confirm', 'User\DeleteController@confirm')->name('user.delete.confirm');
+Route::post('/user/delete/destroy', 'User\DeleteController@destroy')->name('user.delete.destroy');
