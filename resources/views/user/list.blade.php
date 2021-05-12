@@ -39,14 +39,24 @@
 			<td lass="btn">
 				<!-- 編集ボタン -->
 				<form action="" method="post">
+    				<!-- CSRF保護 -->
+    				@csrf
 					<button type="submit">編集</button>
+					<input type="hidden" name="user_id" value="{{ $user['id'] }}">
+					<input type="hidden" name="admin_flag" value="{{ $user['admin_flag'] }}">
+					<input type="hidden" name="user_name" value="{{ $user['name'] }}">
 				</form>
 			</td>
 
 			<td lass="btn">
 				<!-- 削除ボタン -->
-				<form action="" method="post">
+				<form action="{{ route('user.delete.confirm') }}" method="post">
+				    <!-- CSRF保護 -->
+					@csrf
 					<button type="submit">削除</button>
+					<input type="hidden" name="user_id" value="{{ $user['id'] }}">
+					<input type="hidden" name="admin_flag" value="{{ $user['admin_flag'] }}">
+					<input type="hidden" name="user_name" value="{{ $user['name'] }}">
 				</form>
 			</td>
 
