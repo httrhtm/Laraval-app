@@ -38,7 +38,7 @@
 
 			<td lass="btn">
 				<!-- 編集ボタン -->
-				<form action="" method="post">
+				<form action="{{ route('user.edit.edit') }}" method="post">
     				<!-- CSRF保護 -->
     				@csrf
 					<button type="submit">編集</button>
