@@ -6,36 +6,47 @@
 </head>
 <body>
 	@extends('layouts.app_top') @section('content')
-	<h3 class="title">編集</h3>
+	<h3 class="title">ユーザー編集</h3>
 	<div class="user">
 		<form method="POST" action="{{ route('user.edit.confirm') }}" autocomplete="off">
 		<!-- CSRF保護 -->
 			@csrf
+
+			<!-- エラーメッセージ -->
+			@if ($errors->any())
+			<div class="alert alert-danger">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+			@endif
 
 			<!-- 入力フォーム -->
 			<table>
 				<tr>
 					<th>ID:</th>
 					<td>
-						<input class="input" type="text" name="user_id" value="{{ $user_id }}">
+						<input readonly class="input" type="text" name="user_id" value="{{ $user_id }}">
 					</td>
 				</tr>
 				<tr>
 					<th>ユーザー名:</th>
 					<td>
-						<input readonly class="input" type="text" value="{{ $user_name }}">
+						<input readonly class="input" type="text" name="user_name" value="{{ $user_name }}">
 					</td>
 				</tr>
 				<tr>
 					<th>PW:</th>
 					<td>
-						<input class="input" type="password" value="{{ $password }}">
+						<input class="input" type="password" name="password" value="{{ $password }}">
 					</td>
 				</tr>
 				<tr>
 					<th>PW確認:</th>
 					<td>
-						<input class="input" type="password" value="{{ $password }}">
+						<input class="input" type="password" name="password_confirmation" value="{{ $password }}">
 					</td>
 				</tr>
 				<tr>

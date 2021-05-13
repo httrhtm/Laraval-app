@@ -97,7 +97,7 @@ class RegisterController extends Controller
 
         $user = new User();
         $user->name = $user_name;
-        $user->password = Crypt::encryptString($pass); //暗号化
+        $user->password = Hash::make($pass);
         $user->admin_flag = $admin_check;
         $user->save();
 

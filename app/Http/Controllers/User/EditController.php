@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class EditController extends Controller
 {
@@ -32,9 +34,6 @@ class EditController extends Controller
         //idからパスワードを取得
         $password = User::where('id', $user_id)->get(['password']);
 
-        //パスワードを復号
-        $de_password = Crypt::decryptString($password[0]['password']);
-
         //---------------------------
         //編集画面へ移動
         //---------------------------
@@ -42,7 +41,7 @@ class EditController extends Controller
             'user_id' => $user_id,
             'admin_check' => $admin_flag,
             'user_name' => $user_name,
-            'password' => $de_password,
+            'password' => $password[0]['password'],
         ]);
     }
 
@@ -52,17 +51,23 @@ class EditController extends Controller
     public function confirm(Request $request)
     {
         //---------------------------
+        //パラメーターを変数に代入
+        //---------------------------
+        $user_id = $request->user_id;
+        $user_name = $request->user_name;
+        $pass = $request->password;
+        $pass_conf = $request->password_confirmation;
+        $admin_check = $request->admin_check;
+
+        //---------------------------
         // バリデーション
         //---------------------------
         $rules = [
-            'user_name' => ['required', 'regex:/^[a-zA-Z0-9]+$/', ],
             'password' => ['required', 'regex:/^[a-zA-Z0-9]+$/', 'min:8', 'confirmed'],
             'password_confirmation' => ['required'],
         ];
 
         $message = [
-            'user_name.required' => 'ユーザー名を入力してください。',
-            'user_name.regex' => 'ユーザー名を半角英数字で入力してください。',
             'password.required' => 'パスワードを入力してください。',
             'password.regex' => 'パスワードを半角英数字で入力してください',
             'password.min' => 'パスワードを８文字以上で入力してください',
@@ -74,23 +79,16 @@ class EditController extends Controller
 
         //エラー時の処理
         if ($validator->fails()) {
-            return redirect()->route('user.register.create')
+            return redirect()->route('user.edit.edit',
+                ['user_id' => $user_id, 'admin_flag' => $admin_check, 'user_name' => $user_name])
             ->withErrors($validator);
         }
-
-
-        //---------------------------
-        //パラメーターを変数に代入
-        //---------------------------
-        $user_name = $request->user_name;
-        $pass = $request->password;
-        $pass_conf = $request->password_confirmation;
-        $admin_check = $request->admin_check;
 
         //---------------------------
         // 確認画面に移動
         //---------------------------
-        return view('user.register.confirm', [
+        return view('user.edit.confirm', [
+            'user_id' => $user_id,
             'user_name' => $user_name,
             'pass' => $pass,
             'pass_conf' => $pass_conf,
@@ -108,16 +106,17 @@ class EditController extends Controller
         //---------------------------
         //パラメーターを変数に代入
         //---------------------------
-        $user_name = $request->user_name;
+        $user_id = $request->user_id;
         $pass = $request->pass;
         $admin_check = $request->admin_check;
 
-        $user = new User();
-        $user->name = $user_name;
-        $user->password = Hash::make($pass);
-        $user->admin_flag = $admin_check;
-        $user->save();
+        $data = [
+            'password' => Hash::make($pass),
+            'admin_flag' => $admin_check
+        ];
 
-//         return redirect()->route('user.list');
+        User::where('id', $user_id)->update($data);
+
+        return redirect()->route('user.list');
     }
 }
