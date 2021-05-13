@@ -33,7 +33,7 @@ class EditController extends Controller
         $password = User::where('id', $user_id)->get(['password']);
 
         //パスワードを復号
-        $pass = Crypt::decryptString($password[0]['password']);
+        $de_password = Crypt::decryptString($password[0]['password']);
 
         //---------------------------
         //編集画面へ移動
@@ -42,7 +42,7 @@ class EditController extends Controller
             'user_id' => $user_id,
             'admin_check' => $admin_flag,
             'user_name' => $user_name,
-            'password' => $pass,
+            'password' => $de_password,
         ]);
     }
 
