@@ -29,13 +29,13 @@
 				<tr>
 					<th>PW:</th>
 					<td>
-						<input readonly class="input" type="text" name="pass" value="{{ $pass }}">
+						<input readonly class="input" type="password" name="pass" value="{{ $pass }}">
 					</td>
 				</tr>
 				<tr>
 					<th>PW確認:</th>
 					<td>
-						<input readonly class="input" type="text" name="pass_conf" value="{{ $pass_conf }}">
+						<input readonly class="input" type="password" name="pass_conf" value="{{ $pass_conf }}">
 					</td>
 				</tr>
 				<tr>
