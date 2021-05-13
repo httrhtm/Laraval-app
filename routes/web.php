@@ -46,3 +46,8 @@ Route::post('/user/register/store', 'User\RegisterController@store')->name('user
 
 Route::post('/user/delete/confirm', 'User\DeleteController@confirm')->name('user.delete.confirm');
 Route::post('/user/delete/destroy', 'User\DeleteController@destroy')->name('user.delete.destroy');
+
+Route::get('/user/edit/edit', 'User\EditController@edit')->name('user.edit.edit');
+Route::post('/user/edit/edit', 'User\EditController@edit')->name('user.edit.edit');
+Route::post('/user/edit/confirm', 'User\EditController@confirm')->name('user.edit.confirm');
+Route::post('/user/edit/update', 'User\EditController@update')->name('user.edit.update');
