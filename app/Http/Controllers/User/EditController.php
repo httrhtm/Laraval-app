@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class EditController extends Controller
 {
@@ -28,8 +29,11 @@ class EditController extends Controller
         $admin_flag = $request->admin_flag;
         $user_name = $request->user_name;
 
-        //idからanswerを取得
+        //idからパスワードを取得
         $password = User::where('id', $user_id)->get(['password']);
+
+        //パスワードを復号
+        $pass = Crypt::decryptString($password[0]['password']);
 
         //---------------------------
         //編集画面へ移動
@@ -38,7 +42,7 @@ class EditController extends Controller
             'user_id' => $user_id,
             'admin_check' => $admin_flag,
             'user_name' => $user_name,
-            'password' => $password[0]['password']
+            'password' => $pass,
         ]);
     }
 

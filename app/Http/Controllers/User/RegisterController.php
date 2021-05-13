@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\User;
@@ -96,7 +97,7 @@ class RegisterController extends Controller
 
         $user = new User();
         $user->name = $user_name;
-        $user->password = Hash::make($pass);
+        $user->password = Crypt::encryptString($pass); //暗号化
         $user->admin_flag = $admin_check;
         $user->save();
 
